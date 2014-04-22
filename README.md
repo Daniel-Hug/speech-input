@@ -27,3 +27,5 @@ Wrap your input field in a `<div>` with a `speech-input-wrapper` class:
 And you're done! The input field should look like this now:
 
 ![speech-input demo](http://f.cl.ly/items/3m0n2Q0y0h1a0N2P2s0Y/screenshot-by-nimbus.png)
+
+### [License (MIT)](http://hug.mit-license.org/)
