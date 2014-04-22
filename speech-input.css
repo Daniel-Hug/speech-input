@@ -1,0 +1,93 @@
+.speech-input-wrapper {
+	display: inline-block;
+	position: relative;
+}
+
+.speech-input-wrapper input {
+	margin: 0;
+}
+
+.speech-input-wrapper button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 18px;
+	width: 18px;
+	margin: 0;
+	border: 0;
+	padding: 0;
+	background: none;
+}
+
+.icon > .mic,
+.icon > .mic:after,
+.icon > .holder,
+.icon > .holder:before,
+.icon > .holder:after {
+	position: absolute;
+	background: #333;
+}
+
+/* Microphone */
+.icon > .mic {
+	display: block;
+	height: 25%; /* 8px / 32px */
+	top: 9.375%; /* 3px / 32px */
+	left: 37.5%; /* 12px / 32px */
+	right: 37.5%; /* 12px / 32px */
+	-webkit-border-radius: 99px 99px 0 0;
+	-moz-border-radius: 99px 99px 0 0;
+	border-radius: 99px 99px 0 0;
+}
+
+.icon > .mic:before,
+.icon > .mic:after,
+.icon > .holder {
+	-webkit-border-radius: 0 0 99px 99px;
+	-moz-border-radius: 0 0 99px 99px;
+	border-radius: 0 0 99px 99px;
+}
+
+.icon > .mic:before {
+	position: absolute;
+	z-index: 1;
+	content: '';
+	width: 150%; /* 12px / 8px */
+	height: 137.5%; /* 11px / 8px */
+	top: 100%; /* 8px / 8px */
+	left: -25%; /* -2px / 8px */
+	background: #fff;
+}
+
+.icon > .mic:after {
+	z-index: 1;
+	content: '';
+	width: 100%; /* 10px / 10px */
+	height: 100%; /* 10px / 10px */
+	top: 110%; /* 11px / 10px */
+	left: 0;
+}
+
+.icon > .holder {
+	display: block;
+	height: 40.625%; /* 13px / 32px */
+	width: 50%; /* 16px / 32px */
+	left: 25%; /* 8px / 32px */
+	top: 37.5%; /* 12px / 32px */
+}
+
+.icon > .holder:after {
+	content: '';
+	width: 66.666%; /* 8px / 16px */
+	height: 18.182%; /* 2px / 13px */
+	bottom: -30.769%; /* -4px / 13px */
+	left: 16.667%; /* 2px / 16px */
+}
+
+.icon > .holder:before {
+	content: '';
+	width: 33.333%; /* 4px / 16px */
+	height: 27.273%; /* 3px / 13px */
+	top: 92.308%; /* 12px / 13px */
+	left: 33.333%; /* 4px / 16px */
+}
