@@ -42,7 +42,7 @@
 		recognition.continuous = true;
 
 		recognition.onstart = function() {
-			var oldPlaceholder = inputEl.placeholder;
+			oldPlaceholder = inputEl.placeholder;
 			inputEl.placeholder = talkMsg;
 			recognizing = true;
 			micBtn.classList.add('listening');
@@ -54,7 +54,7 @@
 		recognition.onend = function() {
 			recognizing = false;
 			micBtn.classList.remove('listening');
-			inputEl.placeholder = oldPlaceholder;
+			if (oldPlaceholder !== null) inputEl.placeholder = oldPlaceholder;
 		};
 
 		recognition.onresult = function(event) {
