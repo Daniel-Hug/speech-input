@@ -20,7 +20,6 @@
 		var micBtn = document.createElement('button');
 		var micIcon = document.createElement('span');
 		var holderIcon = document.createElement('span');
-		micBtn.className = 'icon';
 		micIcon.className = 'mic';
 		holderIcon.className = 'holder';
 		micBtn.appendChild(micIcon);
