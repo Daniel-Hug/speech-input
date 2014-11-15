@@ -5,6 +5,9 @@
 
 	if (! ('webkitSpeechRecognition' in window) ) return;
 
+	var talkMsg = 'start talking';
+	var patience = 6;
+
 	function capitalize(str) {
 		return str.length ? str[0].toUpperCase() + str.slice(1) : str;
 	}
@@ -12,18 +15,14 @@
 	var speechInputWrappers = document.getElementsByClassName('speech-input-wrapper');
 
 	[].forEach.call(speechInputWrappers, function(speechInputWrapper) {
-		var finalTranscript = '';
-		var recognizing = false;
-		var ignoreOnEnd;
+		// setup elements
 		var inputEl = speechInputWrapper.firstElementChild;
 		var micBtn = document.createElement('button');
-		//var micImg = document.createElement('img');
 		var micIcon = document.createElement('span');
 		var holderIcon = document.createElement('span');
 		micBtn.className = 'icon';
 		micIcon.className = 'mic';
 		holderIcon.className = 'holder';
-		//micImg.src = 'mic.gif';
 		micBtn.appendChild(micIcon);
 		micBtn.appendChild(holderIcon);
 		var inputHeight = inputEl.offsetHeight;
@@ -33,23 +32,29 @@
 		micBtn.style.height = micBtn.style.width = buttonSize + 'px';
 		inputEl.style.paddingRight = buttonSize - inputRightBorder + 'px';
 		speechInputWrapper.appendChild(micBtn);
+
+		// setup recognition
+		var finalTranscript = '';
+		var recognizing = false;
+		var timeout;
+		var oldPlaceholder = null;
 		var recognition = new webkitSpeechRecognition();
 		recognition.continuous = true;
 
 		recognition.onstart = function() {
+			var oldPlaceholder = inputEl.placeholder;
+			inputEl.placeholder = talkMsg;
 			recognizing = true;
 			micBtn.classList.add('listening');
-		};
-
-		recognition.onerror = function(event) {
-			console.log(event.error);
-			ignoreOnEnd = true;
+			timeout = setTimeout(function() {
+				recognition.stop();
+			}, patience * 1000);
 		};
 
 		recognition.onend = function() {
 			recognizing = false;
-			if (ignoreOnEnd) return;
 			micBtn.classList.remove('listening');
+			inputEl.placeholder = oldPlaceholder;
 		};
 
 		recognition.onresult = function(event) {
@@ -68,11 +73,8 @@
 				recognition.stop();
 				return;
 			}
-			finalTranscript = '';
+			inputEl.value = finalTranscript = '';
 			recognition.start();
-			ignoreOnEnd = false;
-			inputEl.value = '';
-			//micImg.src = 'mic-slash.gif';
 		}, false);
 	});
 })();
