@@ -12,18 +12,14 @@
 		return str.length ? str[0].toUpperCase() + str.slice(1) : str;
 	}
 
-	var speechInputWrappers = document.getElementsByClassName('speech-input-wrapper');
+	var speechInputWrappers = document.getElementsByClassName('si-wrapper');
 
 	[].forEach.call(speechInputWrappers, function(speechInputWrapper) {
-		// setup elements
-		var inputEl = speechInputWrapper.firstElementChild;
-		var micBtn = document.createElement('button');
-		var micIcon = document.createElement('span');
-		var holderIcon = document.createElement('span');
-		micIcon.className = 'mic';
-		holderIcon.className = 'holder';
-		micBtn.appendChild(micIcon);
-		micBtn.appendChild(holderIcon);
+		// find elements
+		var inputEl = speechInputWrapper.querySelector('.si-input');
+		var micBtn = speechInputWrapper.querySelector('.si-btn');
+
+		// size and position them
 		var inputHeight = inputEl.offsetHeight;
 		var inputRightBorder = parseInt(getComputedStyle(inputEl).borderRightWidth, 10);
 		var buttonSize = 0.8 * inputHeight;

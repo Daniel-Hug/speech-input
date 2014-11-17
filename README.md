@@ -1,27 +1,25 @@
 speech-input
 ============
 
-Simple speech input for `<input>`s —replaces deprecated `x-webkit-speech` attribute
+Simple speech input for `<input>` elements — replaces deprecated `x-webkit-speech` attribute
 
 Use:
 ----
 
-Include **speech-input.css** in the `<head></head>` element:
+1. Include **speech-input.css** and **speech-input.js**
+2. Add an `si-input` class to your input field. 
+3. Wrap the input in a `<div>` with an `si-wrapper` class.
+4. Add a button with an `si-btn` class as a sibling to the input. For the default style use the button markup in the example below:
 
 ```
-<link rel="stylesheet" href="speech-input.css">
-```
-
-Include **speech-input.js** just before the closing `</body>` tag:
-
-```
-<script src="speech-input.js"></script>
-```
-
-Wrap your input field in a `<div>` with a `speech-input-wrapper` class:
-
-```
-<div class="speech-input-wrapper"><input type="text"></div>
+<div class="si-wrapper">
+    <input type="text" class="si-input" placeholder="What's up?">
+    <button class="si-btn">
+        speech input
+        <span class="si-mic"></span>
+        <span class="si-holder"></span>
+    </button>
+</div>
 ```
 
 And you're done! The input field should look like this now:

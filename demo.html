@@ -4,12 +4,19 @@
 <title>Simple speech input for &lt;input&gt;s —replaces deprecated x-webkit-speech attribute</title>
 <link rel="stylesheet" href="speech-input.css">
 <style>
-.speech-input-wrapper input {
+.si-wrapper input {
 	font-size: 2em;
 	padding: .1em;
 }
 </style>
 
-<div class="speech-input-wrapper"><input type="text"></div>
+<div class="si-wrapper">
+	<input type="text" class="si-input" placeholder="What's up?">
+	<button class="si-btn">
+		speech input
+		<span class="si-mic"></span>
+		<span class="si-holder"></span>
+	</button>
+</div>
 
 <script src="speech-input.js"></script>
