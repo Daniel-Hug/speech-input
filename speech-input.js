@@ -36,23 +36,29 @@
 		var recognition = new webkitSpeechRecognition();
 		recognition.continuous = true;
 
+		function restartTimer() {
+			timeout = setTimeout(function() {
+				recognition.stop();
+			}, patience * 1000);
+		}
+
 		recognition.onstart = function() {
 			oldPlaceholder = inputEl.placeholder;
 			inputEl.placeholder = talkMsg;
 			recognizing = true;
 			micBtn.classList.add('listening');
-			timeout = setTimeout(function() {
-				recognition.stop();
-			}, patience * 1000);
+			restartTimer();
 		};
 
 		recognition.onend = function() {
 			recognizing = false;
+			clearTimeout(timeout);
 			micBtn.classList.remove('listening');
 			if (oldPlaceholder !== null) inputEl.placeholder = oldPlaceholder;
 		};
 
 		recognition.onresult = function(event) {
+			clearTimeout(timeout);
 			for (var i = event.resultIndex; i < event.results.length; ++i) {
 				if (event.results[i].isFinal) {
 					finalTranscript += event.results[i][0].transcript;
@@ -60,6 +66,7 @@
 			}
 			finalTranscript = capitalize(finalTranscript);
 			inputEl.value = finalTranscript;
+			restartTimer();
 		};
 
 		micBtn.addEventListener('click', function(event) {
