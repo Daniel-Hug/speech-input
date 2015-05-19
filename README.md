@@ -37,6 +37,9 @@ Make sure you're using it on an actual server — it won't work on a `file://` U
 Python -m SimpleHTTPServer
 ```
 
+### [Can I use](http://caniuse.com/#feat=web-speech) this in non-webkit browsers?
+Not yet.
+
 ## [License (MIT)](http://hug.mit-license.org/)
 
 
