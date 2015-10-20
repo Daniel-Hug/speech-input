@@ -44,4 +44,5 @@ Not yet.
 
 
 [1]: http://f.cl.ly/items/3m0n2Q0y0h1a0N2P2s0Y/screenshot-by-nimbus.png
-[2]: http://daniel-hug.github.io/speech-input/
+[2]: http://daniel-hug.github.io/speech-input/ 
+speech
