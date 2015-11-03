@@ -10,7 +10,7 @@ Simple speech input for `<input>` elements — replaces deprecated `x-webkit-spe
 3. Wrap the input in a `<div>` with an `si-wrapper` class.
 4. Add a button with an `si-btn` class as a sibling to the input. For the default style use the button markup in the example below:
 
-```
+```html
 <div class="si-wrapper">
     <input type="text" class="si-input" placeholder="What's up?">
     <button class="si-btn">
