@@ -31,11 +31,7 @@ And you're done! Here's a demo:
 To have the microphone permissions persist, use https: http://stackoverflow.com/a/15999940/552067
 
 ### I clicked the mic button but it didn't do anything.
-Make sure you're using it on an actual server — it won't work on a `file://` URL. You can start a simple Python server in your command prompt:
-
-```
-Python -m SimpleHTTPServer
-```
+Make sure you're using it on an actual server — it won't work on a `file://` URL. Try [starting up a simple static HTTP server](https://gist.github.com/willurd/5720255).
 
 ### [Can I use](http://caniuse.com/#feat=web-speech) this in non-webkit browsers?
 Not yet.
