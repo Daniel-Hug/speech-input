@@ -6,7 +6,7 @@ Simple speech input for `<input>` elements — replaces deprecated `x-webkit-spe
 ## Use:
 
 1. Include **speech-input.css** and **speech-input.js**
-2. Add an `si-input` class to your input field.
+2. Add a `speech-input` class to your input field
 
 And you're done! Here's a demo:
 
