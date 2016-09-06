@@ -1,7 +1,7 @@
 speech-input
 ============
 
-Simple speech input for `<input>` elements — replaces deprecated `x-webkit-speech` attribute
+Simple speech input for `<input>` elements — replaces the now defunct `x-webkit-speech` attribute
 
 ## Use:
 
