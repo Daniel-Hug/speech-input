@@ -39,6 +39,8 @@
 		var inputHeight = inputEl.offsetHeight;
 		var inputRightBorder = parseInt(getComputedStyle(inputEl).borderRightWidth, 10);
 		var buttonSize = 0.8 * inputHeight;
+		// Size bounds (useful for textareas).
+		if (buttonSize > 26) buttonSize = 26;
 
 		// append mic and input to wrapper
 		wrapper.appendChild(parent.removeChild(inputEl));
