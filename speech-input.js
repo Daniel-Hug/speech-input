@@ -19,8 +19,12 @@
 
 	[].forEach.call(inputEls, function(inputEl) {
 		// create wrapper
-		var wrapper = document.createElement('div');
-		wrapper.classList.add('si-wrapper');
+		if (inputEl.parentNode.classList.contains('si-wrapper')) {
+			var wrapper = inputEl.parentNode;
+		} else {
+			var wrapper = document.createElement('div');
+			wrapper.classList.add('si-wrapper');
+		}
 
 		// create mic button
 		var micBtn = document.createElement('button');
