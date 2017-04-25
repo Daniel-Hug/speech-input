@@ -4,13 +4,24 @@
 <title>Simple speech input for &lt;input&gt;s —replaces deprecated x-webkit-speech attribute</title>
 <link rel="stylesheet" href="speech-input.css">
 <style>
+h3 {
+	font-size: 1.5em;
+	margin: 1.5em 0 0.4em;
+	font-family: sans-serif;
+	font-weight: normal;
+}
+
 .speech-input {
 	font-size: 2em;
 	padding: .1em;
 }
 </style>
 
+<h3>Single-line input</h3>
 <input type="text" class="speech-input" placeholder="What's up?">
+
+<h3>Multi-line text area</h3>
+<textarea class="speech-input" placeholder="What's your story?" rows="10" cols="40"></textarea>
 
 <br><br><br>
 <a class="github-button" href="https://github.com/Daniel-Hug/speech-input" data-icon="octicon-star" data-style="mega" data-count-href="/Daniel-Hug/speech-input/stargazers" data-count-api="/repos/Daniel-Hug/speech-input#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star Daniel-Hug/speech-input on GitHub">Star</a>

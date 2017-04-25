@@ -1,12 +1,12 @@
 speech-input
 ============
 
-Simple speech input for `<input>` elements — replaces the now defunct `x-webkit-speech` attribute
+Simple speech input for `<input>` and `<textarea>` elements — replaces the now defunct `x-webkit-speech` attribute
 
 ## Use:
 
 1. Include **speech-input.css** and **speech-input.js**
-2. Add a `speech-input` class to your input field
+2. Add a `speech-input` class to your input field or text area
 
 And you're done! Here's a demo:
 
