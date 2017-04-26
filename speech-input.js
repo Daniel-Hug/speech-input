@@ -1,5 +1,4 @@
 /*global webkitSpeechRecognition */
-window.events = [];
 (function() {
 	'use strict';
 
@@ -105,7 +104,6 @@ window.events = [];
 
 			// get SpeechRecognitionResultList object
 			var resultList = event.results;
-			window.events.push(resultList);
 
 			// go through each SpeechRecognitionResult object in the list
 			var interimTranscript = '';
@@ -122,9 +120,21 @@ window.events = [];
 				}
 			}
 
+			// capitalize transcript if start of new sentence
 			var transcript = finalTranscript || interimTranscript;
 			transcript = !prefix || isSentence ? capitalize(transcript) : transcript;
+
+			// append transcript to cached input value
 			inputEl.value = prefix + transcript;
+
+			// set cursur and scroll to end
+			inputEl.focus();
+			if (inputEl.tagName === 'INPUT') {
+				inputEl.scrollLeft = inputEl.scrollWidth;
+			} else {
+				inputEl.scrollTop = inputEl.scrollHeight;
+			}
+
 			restartTimer();
 		};
 
@@ -137,11 +147,11 @@ window.events = [];
 				return;
 			}
 
-			// Add new results onto last transcript ensuring whitespace between.
+			// Cache current input value which the new transcript will be appended to
 			var endsWithWhitespace = inputEl.value.slice(-1).match(/\s/);
 			prefix = !inputEl.value || endsWithWhitespace ? inputEl.value : inputEl.value + ' ';
 
-			// check if prefix ends with a sentence
+			// check if value ends with a sentence
 			isSentence = prefix.trim().slice(-1).match(/[\.\?\!]/);
 
 			// restart recognition
