@@ -2,32 +2,23 @@
 
 <meta charset="utf-8">
 <title>Simple speech input for inputs and textareas</title>
+<meta name="viewport" content="width=540">
 <link rel="stylesheet" href="speech-input.css">
-<style>
-h3 {
-	font-size: 1.5em;
-	margin: 1.5em 0 0.4em;
-	font-family: sans-serif;
-	font-weight: normal;
-}
+<link rel="stylesheet" href="demo.css">
 
-.speech-input {
-	font-size: 2em;
-	padding: .1em;
-}
-</style>
+<h1>
+	<code><span class="tag-marker">&lt;</span><span class="tag-name">input</span><span class="tag-marker">&gt;</span></code> and <code><span class="tag-marker">&lt;</span><span class="tag-name">textarea</span><span class="tag-marker">&gt;</span></code> speech recognition
+	<a class="github-button" href="https://github.com/Daniel-Hug/speech-input" data-icon="octicon-star" data-style="mega" data-count-href="/Daniel-Hug/speech-input/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star Daniel-Hug/speech-input on GitHub">Star</a>
+</h1>
 
-<h3>Single-line input</h3>
+<h2>Single-line input</h2>
 <input type="text" class="speech-input" placeholder="What's up?">
 
-<h3>Single-line input (Spanish)</h3>
+<h2>Single-line input (Spanish)</h2>
 <input type="text" class="speech-input" placeholder="¿Qué tal?" data-ready="Habla ahora" lang="es">
 
-<h3>Multi-line text area</h3>
+<h2>Multi-line text area</h2>
 <textarea class="speech-input" placeholder="What's your story?" rows="10" cols="40"></textarea>
-
-<br><br><br>
-<a class="github-button" href="https://github.com/Daniel-Hug/speech-input" data-icon="octicon-star" data-style="mega" data-count-href="/Daniel-Hug/speech-input/stargazers" data-count-api="/repos/Daniel-Hug/speech-input#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star Daniel-Hug/speech-input on GitHub">Star</a>
 
 <script src="speech-input.js"></script>
 

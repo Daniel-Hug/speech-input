@@ -1,0 +1,52 @@
+body {
+	margin-left: 9%;
+	min-width: 479px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-size: 1.5em;
+	margin: 1.5em 0 0.4em;
+	font-family: sans-serif;
+	font-weight: normal;
+}
+h1 {
+	font-size: 2.8em;
+	margin: 1.0em 0;
+	max-width: 800px;
+}
+
+a.github-button {
+    display: inline-block;
+    width: 100px;
+}
+
+@media (min-width: 900px) {
+	h1 {
+		font-size: 4.0em;
+		margin: 1.0em 0;
+		max-width: 800px;
+	}
+	h1 iframe {
+		transform: scale(1.5) translate(25%,-14%);
+	}
+}
+
+.tag-name {
+	color: crimson;
+}
+
+.tag-marker {
+	color: #0000f0;
+}
+
+.speech-input {
+	width: 440px;
+	max-width: 100%;
+	font-size: 2em;
+	padding: 0.4em;
+	box-sizing: border-box;
+}
+
+textarea {
+	height: 160px;
+}
