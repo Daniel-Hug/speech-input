@@ -5,7 +5,7 @@
 	// check for support (webkit only)
 	if (! ('webkitSpeechRecognition' in window) ) return;
 
-	var talkMsg = 'start talking';
+	var talkMsg = 'Speak now';
 
 	// seconds to wait for more input after last
 	var patience = 6;
@@ -77,6 +77,10 @@
 		recognition.continuous = true;
 		recognition.interimResults = true;
 
+		// if lang attribute is set on field use that
+		// (defaults to use the lang of the root element)
+		if (inputEl.lang) recognition.lang = inputEl.lang;
+
 		function restartTimer() {
 			timeout = setTimeout(function() {
 				recognition.stop();
@@ -85,7 +89,7 @@
 
 		recognition.onstart = function() {
 			oldPlaceholder = inputEl.placeholder;
-			inputEl.placeholder = talkMsg;
+			inputEl.placeholder = inputEl.dataset.ready || talkMsg;
 			recognizing = true;
 			micBtn.classList.add('listening');
 			restartTimer();
