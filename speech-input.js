@@ -1,14 +1,13 @@
 /*global webkitSpeechRecognition */
 (function() {
 	'use strict';
-
+	
 	// check for support (webkit only)
-	if (! ('webkitSpeechRecognition' in window) ) return;
+	if (document.createElement('input').webkitSpeech !== undefined || !('webkitSpeechRecognition' in window)) return;
 
 	var talkMsg = 'Speak now';
 
 	// seconds to wait for more input after last
-	var patience = 6;
 
 	function capitalize(str) {
 		return str.charAt(0).toUpperCase() + str.slice(1);
@@ -17,6 +16,7 @@
 	var inputEls = document.getElementsByClassName('speech-input');
 
 	[].forEach.call(inputEls, function(inputEl) {
+		var patience = inputEl.dataset.patience || 6;
 		var micBtn, micIcon, holderIcon, newWrapper;
 		var shouldCapitalize = true;
 
@@ -25,8 +25,8 @@
 		var parent = inputEl.parentNode;
 		var inputHeight = inputEl.offsetHeight;
 		var inputRightBorder = parseInt(getComputedStyle(inputEl).borderRightWidth, 10);
-		var buttonSize = 0.8 * inputHeight;
-		var buttonTop = 0.1 * inputHeight;
+		var buttonSize = 0.8 * (inputEl.dataset.buttonsize || inputHeight);
+		var buttonTop = 0.1 * (inputEl.dataset.buttonsize || inputHeight);
 
 		// max size for textareas
 		if (inputEl.tagName === 'TEXTAREA') {
