@@ -21,6 +21,27 @@ Yes. It uses the value of the `lang` attribute on the `<html>` element by defaul
 <input type="text" class="speech-input" lang="es" data-ready="Habla ahora">
 ```
 
+### Extra options
+
+**Button Size**
+
+If, for any reason, you want  to change the button size, you can use the data attribute `buttonsize`.
+
+```html
+<input type="text" class="speech-input" data-buttonsize="20">
+```
+
+**Speech time limit**
+
+By default, the speech limit is 6 seconds. If you want to change this, you can use the data attribute `patience`.
+
+```html
+<input type="text" class="speech-input" data-patience="2">
+```
+
+*(The above example will give 2 seconds limit after you stop speeching)*
+
+
 ### Why does it keep asking me to allow the microphone?
 To have the microphone permissions persist, use https: http://stackoverflow.com/a/15999940/552067
 
