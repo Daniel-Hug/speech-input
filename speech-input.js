@@ -2,8 +2,10 @@
 (function() {
 	'use strict';
 	
+	var speechSupport = document.createElement('input').webkitSpeech !== undefined;
+	
 	// check for support (webkit only)
-	if (document.createElement('input').webkitSpeech !== undefined || !('webkitSpeechRecognition' in window)) return;
+	if (!('webkitSpeechRecognition' in window)) return;
 
 	var talkMsg = 'Speak now';
 
@@ -16,6 +18,8 @@
 	var inputEls = document.getElementsByClassName('speech-input');
 
 	[].forEach.call(inputEls, function(inputEl) {
+		if (speechSupport && inputEl.hasAttribute('x-webkit-speech')) return;
+		
 		var patience = inputEl.dataset.patience || 6;
 		var micBtn, micIcon, holderIcon, newWrapper;
 		var shouldCapitalize = true;
