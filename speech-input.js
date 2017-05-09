@@ -16,22 +16,19 @@
 	var inputEls = document.getElementsByClassName('speech-input');
 
 	[].forEach.call(inputEls, function(inputEl) {
-		var patience = inputEl.dataset.patience || defaultPatienceThreshold;
+		var patience = parseInt(inputEl.dataset.patience, 10) || defaultPatienceThreshold;
 		var micBtn, micIcon, holderIcon, newWrapper;
 		var shouldCapitalize = true;
 
 		// gather inputEl data
 		var nextNode = inputEl.nextSibling;
 		var parent = inputEl.parentNode;
-		var inputHeight = inputEl.offsetHeight;
 		var inputRightBorder = parseInt(getComputedStyle(inputEl).borderRightWidth, 10);
-		var buttonSize = 0.8 * (inputEl.dataset.buttonsize || inputHeight);
-		var buttonTop = 0.1 * (inputEl.dataset.buttonsize || inputHeight);
+		var buttonSize = 0.8 * (inputEl.dataset.buttonsize || inputEl.offsetHeight);
 
-		// max size for textareas
-		if (inputEl.tagName === 'TEXTAREA') {
-			if (buttonTop > 6.5) buttonTop = 6.5;
-			if (buttonSize > 26) buttonSize = 26;
+		// default max size for textareas
+		if (!inputEl.dataset.buttonsize && inputEl.tagName === 'TEXTAREA' && buttonSize > 26) {
+			buttonSize = 26;
 		}
 
 		// create wrapper if not present
@@ -59,7 +56,7 @@
 
 			// size and position mic and input
 			micBtn.style.cursor = 'pointer';
-			micBtn.style.top = buttonTop + 'px';
+			micBtn.style.top = 0.125 * buttonSize + 'px';
 			micBtn.style.height = micBtn.style.width = buttonSize + 'px';
 			inputEl.style.paddingRight = buttonSize - inputRightBorder + 'px';
 		}
