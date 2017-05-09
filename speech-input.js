@@ -1,15 +1,13 @@
 /*global webkitSpeechRecognition */
 (function() {
 	'use strict';
-	
-	var speechSupport = document.createElement('input').webkitSpeech !== undefined;
-	
+
 	// check for support (webkit only)
 	if (!('webkitSpeechRecognition' in window)) return;
 
 	var talkMsg = 'Speak now';
-
 	// seconds to wait for more input after last
+  var defaultPatienceThreshold = 6;
 
 	function capitalize(str) {
 		return str.charAt(0).toUpperCase() + str.slice(1);
@@ -18,9 +16,7 @@
 	var inputEls = document.getElementsByClassName('speech-input');
 
 	[].forEach.call(inputEls, function(inputEl) {
-		if (speechSupport && inputEl.hasAttribute('x-webkit-speech')) return;
-		
-		var patience = inputEl.dataset.patience || 6;
+		var patience = inputEl.dataset.patience || defaultPatienceThreshold;
 		var micBtn, micIcon, holderIcon, newWrapper;
 		var shouldCapitalize = true;
 
