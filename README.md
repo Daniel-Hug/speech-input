@@ -39,7 +39,7 @@ By default, the speech limit is 6 seconds. If you want to change this, you can u
 <input type="text" class="speech-input" data-patience="2">
 ```
 
-*(The above example will give 2 seconds limit after you stop speeching)*
+*(The above example will give 2 seconds limit after you stop speaking)*
 
 
 ### Why does it keep asking me to allow the microphone?
