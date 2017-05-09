@@ -7,7 +7,7 @@
 
 	var talkMsg = 'Speak now';
 	// seconds to wait for more input after last
-  var defaultPatienceThreshold = 6;
+  	var defaultPatienceThreshold = 6;
 
 	function capitalize(str) {
 		return str.charAt(0).toUpperCase() + str.slice(1);
