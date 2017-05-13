@@ -44,6 +44,7 @@
 		var micBtn = wrapper.querySelector('.si-btn');
 		if (!micBtn) {
 			micBtn = document.createElement('button');
+			micBtn.type = 'button';
 			micBtn.classList.add('si-btn');
 			micBtn.textContent = 'speech input';
 			var micIcon = document.createElement('span');
