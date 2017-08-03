@@ -41,14 +41,14 @@
 		}
 
 		// create mic button if not present
-		var micBtn = wrapper.querySelector('.si-btn');
+		micBtn = wrapper.querySelector('.si-btn');
 		if (!micBtn) {
 			micBtn = document.createElement('button');
 			micBtn.type = 'button';
 			micBtn.classList.add('si-btn');
 			micBtn.textContent = 'speech input';
-			var micIcon = document.createElement('span');
-			var holderIcon = document.createElement('span');
+			micIcon = document.createElement('span');
+			holderIcon = document.createElement('span');
 			micIcon.classList.add('si-mic');
 			holderIcon.classList.add('si-holder');
 			micBtn.appendChild(micIcon);
