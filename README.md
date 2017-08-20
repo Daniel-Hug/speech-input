@@ -12,35 +12,38 @@ And you're done! Here's a demo:
 
 [![speech-input demo][1]][2]
 
-## FAQ
+## Extra options
 
-### Does it support recognition in other languages?
-Yes. It uses the value of the `lang` attribute on the `<html>` element by default. But you can override this by specifying a `lang` attribute on the input fields themselves. You may then also want to customize the "Speak now" text for that language with a `data-ready` attribute on that field:
+### Other languages
+It uses the value of the `lang` attribute on the `<html>` element by default. But you can override this by specifying a `lang` attribute on the input fields themselves. You may then also want to customize the "Speak now" text for that language with a `data-ready` attribute on that field:
 
 ```html
 <input type="text" class="speech-input" lang="es" data-ready="Habla ahora">
 ```
 
-### Extra options
-
-**Button Size**
-
-If, for any reason, you want  to change the button size, you can use the data attribute `buttonsize`.
+### Button size
+If, for any reason, you want to change the button size, you can use the `data-buttonsize` attribute:
 
 ```html
 <input type="text" class="speech-input" data-buttonsize="20">
 ```
 
-**Speech time limit**
-
-By default, the speech limit is 6 seconds. If you want to change this, you can use the data attribute `patience`.
+### Speech time limit
+By default, it will wait a full 6 seconds after you finish speaking until it stops listening. You can change this time with the `data-patience` attribute:
 
 ```html
 <input type="text" class="speech-input" data-patience="2">
 ```
 
-*(The above example will give 2 seconds limit after you stop speaking)*
+### Submit when done
+If you add the `data-instant-submit` attribute, the form that the input is in will automatically be submitted after listening stops:
 
+```html
+<input type="text" class="speech-input" data-instant-submit>
+```
+
+
+## FAQ
 
 ### Why does it keep asking me to allow the microphone?
 To have the microphone permissions persist, use https: http://stackoverflow.com/a/15999940/552067
