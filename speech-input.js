@@ -98,14 +98,11 @@
 			clearTimeout(timeout);
 			micBtn.classList.remove('listening');
 			if (oldPlaceholder !== null) inputEl.placeholder = oldPlaceholder;
-			if (inputEl.dataset.instantSubmit) {
-				// traverse ancestors to find form element
-				for (var ancestor = inputEl.parentNode; ancestor; ancestor = ancestor.parentNode) {
-					if (ancestor.tagName === 'FORM') {
-						ancestor.submit();
-						break;
-					}
-				}
+
+			// If the <input> has data-instant-submit and a value,
+			if (inputEl.dataset.instantSubmit !== undefined && inputEl.value) {
+				// submit the form it's in (if it is in one).
+				if (inputEl.form) inputEl.form.submit();
 			}
 		};
 
