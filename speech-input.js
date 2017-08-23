@@ -7,7 +7,7 @@
 
 	var talkMsg = 'Speak now';
 	// seconds to wait for more input after last
-  	var defaultPatienceThreshold = 6;
+	var defaultPatienceThreshold = 6;
 
 	function capitalize(str) {
 		return str.charAt(0).toUpperCase() + str.slice(1);
@@ -19,6 +19,7 @@
 		var patience = parseInt(inputEl.dataset.patience, 10) || defaultPatienceThreshold;
 		var micBtn, micIcon, holderIcon, newWrapper;
 		var shouldCapitalize = true;
+		var isError = false;
 
 		// gather inputEl data
 		var nextNode = inputEl.nextSibling;
@@ -100,11 +101,15 @@
 			if (oldPlaceholder !== null) inputEl.placeholder = oldPlaceholder;
 
 			// If the <input> has data-instant-submit and a value,
-			if (inputEl.dataset.instantSubmit !== undefined && inputEl.value) {
+			if (inputEl.dataset.instantSubmit !== undefined && inputEl.value && !isError) {
 				// submit the form it's in (if it is in one).
 				if (inputEl.form) inputEl.form.submit();
 			}
 		};
+
+		recognition.onerror = function (event) {
+			isError = true;
+		}
 
 		var finalTranscript = '';
 		recognition.onresult = function(event) {
