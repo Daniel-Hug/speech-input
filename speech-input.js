@@ -20,6 +20,7 @@
 		var micBtn, micIcon, holderIcon, newWrapper;
 		var shouldCapitalize = true;
 		var isError = false;
+		var clearInput = !!inputEl.dataset.clearInput;
 
 		// gather inputEl data
 		var nextNode = inputEl.nextSibling;
@@ -88,6 +89,9 @@
 
 		recognition.onstart = function() {
 			oldPlaceholder = inputEl.placeholder;
+			if (clearInput) {
+				inputEl.value = '';
+			}
 			inputEl.placeholder = inputEl.dataset.ready || talkMsg;
 			recognizing = true;
 			micBtn.classList.add('listening');
@@ -160,9 +164,13 @@
 				return;
 			}
 
-			// Cache current input value which the new transcript will be appended to
-			var endsWithWhitespace = inputEl.value.slice(-1).match(/\s/);
-			prefix = !inputEl.value || endsWithWhitespace ? inputEl.value : inputEl.value + ' ';
+			if (clearInput) {
+				prefix = '';
+			} else {
+				// Cache current input value which the new transcript will be appended to
+				var endsWithWhitespace = inputEl.value.slice(-1).match(/\s/);
+				prefix = !inputEl.value || endsWithWhitespace ? inputEl.value : inputEl.value + ' ';
+			}
 
 			// check if value ends with a sentence
 			isSentence = prefix.trim().slice(-1).match(/[\.\?\!]/);
