@@ -131,7 +131,7 @@
 				var firstAlternative = result[0];
 
 				if (result.isFinal) {
-					finalTranscript += firstAlternative.transcript;
+					finalTranscript = firstAlternative.transcript;
 				} else {
 					interimTranscript += firstAlternative.transcript;
 				}
