@@ -7,7 +7,7 @@
 
 	var talkMsg = 'Speak now';
 	// seconds to wait for more input after last
-  	var defaultPatienceThreshold = 6;
+	var defaultPatienceThreshold = 6;
 
 	function capitalize(str) {
 		return str.charAt(0).toUpperCase() + str.slice(1);
@@ -19,6 +19,8 @@
 		var patience = parseInt(inputEl.dataset.patience, 10) || defaultPatienceThreshold;
 		var micBtn, micIcon, holderIcon, newWrapper;
 		var shouldCapitalize = true;
+		var isError = false;
+		var clearInput = !!inputEl.dataset.clearInput;
 
 		// gather inputEl data
 		var nextNode = inputEl.nextSibling;
@@ -87,6 +89,9 @@
 
 		recognition.onstart = function() {
 			oldPlaceholder = inputEl.placeholder;
+			if (clearInput) {
+				inputEl.value = '';
+			}
 			inputEl.placeholder = inputEl.dataset.ready || talkMsg;
 			recognizing = true;
 			micBtn.classList.add('listening');
@@ -100,11 +105,15 @@
 			if (oldPlaceholder !== null) inputEl.placeholder = oldPlaceholder;
 
 			// If the <input> has data-instant-submit and a value,
-			if (inputEl.dataset.instantSubmit !== undefined && inputEl.value) {
+			if (inputEl.dataset.instantSubmit !== undefined && inputEl.value && !isError) {
 				// submit the form it's in (if it is in one).
 				if (inputEl.form) inputEl.form.submit();
 			}
 		};
+
+		recognition.onerror = function (event) {
+			isError = true;
+		}
 
 		var finalTranscript = '';
 		recognition.onresult = function(event) {
@@ -122,7 +131,7 @@
 				var firstAlternative = result[0];
 
 				if (result.isFinal) {
-					finalTranscript += firstAlternative.transcript;
+					finalTranscript = firstAlternative.transcript;
 				} else {
 					interimTranscript += firstAlternative.transcript;
 				}
@@ -155,9 +164,13 @@
 				return;
 			}
 
-			// Cache current input value which the new transcript will be appended to
-			var endsWithWhitespace = inputEl.value.slice(-1).match(/\s/);
-			prefix = !inputEl.value || endsWithWhitespace ? inputEl.value : inputEl.value + ' ';
+			if (clearInput) {
+				prefix = '';
+			} else {
+				// Cache current input value which the new transcript will be appended to
+				var endsWithWhitespace = inputEl.value.slice(-1).match(/\s/);
+				prefix = !inputEl.value || endsWithWhitespace ? inputEl.value : inputEl.value + ' ';
+			}
 
 			// check if value ends with a sentence
 			isSentence = prefix.trim().slice(-1).match(/[\.\?\!]/);
