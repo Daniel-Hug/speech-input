@@ -11,14 +11,18 @@
 	<a class="github-button" href="https://github.com/Daniel-Hug/speech-input" data-icon="octicon-star" data-style="mega" data-count-href="/Daniel-Hug/speech-input/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star Daniel-Hug/speech-input on GitHub">Star</a>
 </h1>
 
+<form action="." method="get">
+
 <h2>Single-line input</h2>
-<input type="text" class="speech-input" placeholder="What's up?">
+<input type="text" class="speech-input" placeholder="What's up?" name="eng-input">
 
 <h2>Single-line input (Spanish)</h2>
-<input type="text" class="speech-input" placeholder="¿Qué tal?" data-ready="Habla ahora" lang="es">
+<input type="text" class="speech-input" placeholder="¿Qué tal?" data-ready="Habla ahora" name="spa-input" lang="es">
 
 <h2>Multi-line text area</h2>
-<textarea class="speech-input" placeholder="What's your story?" rows="10" cols="40"></textarea>
+<textarea class="speech-input" placeholder="What's your story?" rows="10" cols="40" name="eng-textarea"></textarea>
+
+</form>
 
 <script src="speech-input.js"></script>
 
