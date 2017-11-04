@@ -106,7 +106,6 @@
 			}
 		};
 
-		var finalTranscript = '';
 		recognition.onresult = function(event) {
 			clearTimeout(timeout);
 
@@ -114,6 +113,7 @@
 			var resultList = event.results;
 
 			// go through each SpeechRecognitionResult object in the list
+			var finalTranscript = '';
 			var interimTranscript = '';
 			for (var i = event.resultIndex; i < resultList.length; ++i) {
 				var result = resultList[i];
@@ -122,7 +122,7 @@
 				var firstAlternative = result[0];
 
 				if (result.isFinal) {
-					finalTranscript += firstAlternative.transcript;
+					finalTranscript = firstAlternative.transcript;
 				} else {
 					interimTranscript += firstAlternative.transcript;
 				}
@@ -163,7 +163,6 @@
 			isSentence = prefix.trim().slice(-1).match(/[\.\?\!]/);
 
 			// restart recognition
-			finalTranscript = '';
 			recognition.start();
 		}, false);
 	});
