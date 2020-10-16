@@ -22,6 +22,11 @@
 
 		// gather inputEl data
 		var nextNode = inputEl.nextSibling;
+		var isHTMLEditor = false;
+		if (inputEl.classList.contains("textarea_editor")) {
+			isHTMLEditor = true;
+			console.log("speech-input applied to textarea_editor");
+        }
 		var parent = inputEl.parentNode;
 		var inputRightBorder = parseInt(getComputedStyle(inputEl).borderRightWidth, 10);
 		var buttonSize = 0.8 * (inputEl.dataset.buttonsize || inputEl.offsetHeight);
@@ -36,6 +41,7 @@
 		if (!wrapper.classList.contains('si-wrapper')) {
 			wrapper = document.createElement('div');
 			wrapper.classList.add('si-wrapper');
+			wrapper.style.width = "100%"
 			wrapper.appendChild(parent.removeChild(inputEl));
 			newWrapper = true;
 		}
@@ -133,8 +139,12 @@
 			transcript = !prefix || isSentence ? capitalize(transcript) : transcript;
 
 			// append transcript to cached input value
-			inputEl.value = prefix + transcript;
-
+			if (isHTMLEditor) {
+				$('#' + inputEl.id).data("wysihtml5").editor.setValue(prefix + transcript);
+			}
+			else {
+				inputEl.value = prefix + transcript;
+			}
 			// set cursur and scroll to end
 			inputEl.focus();
 			if (inputEl.tagName === 'INPUT') {
